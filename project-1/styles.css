@@ -1,0 +1,141 @@
+:root {
+    --light-text-color: white;
+    --header-footer-color: #CFD7C7;
+    --button-color: #70A9A1;
+    --border-color: #0B2027;
+    /* set up fonts? */
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* SECTION 1: WELCOME SCREEN */
+/* deal with this at the end */
+#welcomeScreen {
+    background-image: url("../images/resto-entrance.jpg");
+    background-size: cover;
+    height: 100vh;
+    /* toggle between display flex and none to work on this */
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 30px;
+}
+#welcomeScreen h1{
+    font-size: 42px;
+    text-shadow: 1px 1px 2px var(--border-color);
+    color: white;
+    text-align: center;
+}
+#welcomeScreen p {
+    color: white;
+    text-shadow: 1px 1px 2px var(--border-color);
+    font-size: 24px;
+    text-align: center;
+}
+button {
+    background-color: var(--button-color);
+    border: 1px solid;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    width: 200px;
+}
+
+/* SECTION 2: PLAY SCREEN */
+#playScreen {
+    background-image: url("../images/obermamma-interior.jpg");
+    background-size: cover;
+    height: 100vh;
+    /* toggle between display flex and none to work on this */
+    display: flex;  
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* SECTION 2a: QUESTION SECTION */
+#question {
+    background-color: var(--header-footer-color);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    width: 100vw;
+}
+
+/* SECTION 2b: MENU ITEMS */
+h2 {
+    color: var(--light-text-color);
+    text-shadow: 1px 1px 4px var(--border-color);
+    text-align: center;
+    padding: 10px 0px;
+}
+#filter, #sort {
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    height: auto;
+    padding: 0px 5px;
+    text-shadow: 1px 1px 2px var(--light-text-color);
+    width: auto;
+}
+#menuItemsSection {
+    width: 90vw;
+}
+#tableBox {
+    border: 1px solid var(--border-color);
+    background-color: var(--light-text-color);
+    height: 30vh;
+    overflow-y: scroll;
+    width: 100%;
+}
+#fullMenuTable{
+    border-collapse: separate;
+    border-spacing: 5px 10px;
+    padding: 5px;
+}
+.menuItem{
+    vertical-align: top;
+}
+.menuItem .col1 {
+    width: 70%;
+}
+.menuItem .col2, .menuItem .col3 {
+    width: 15%;
+}
+
+
+/* SECTION 2c: PLAYER CHOICES */
+
+#playerChoicesTable {
+    background-color: var(--light-text-color);
+    width: 90vw;
+    border-collapse: separate;
+    border-spacing: 5px 10px;
+    padding: 5px;
+}
+.playerChoicesTable .col1 {
+    width: 80%;
+}   
+.playerChoicesTable .col2,{
+    width: 20%;
+}
+
+/* SECTION 2d: SUBMIT BUTTON */
+
+
+/* SECTION 2e: RESULTS */
+#response {
+    background-color: var(--header-footer-color);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    width: 100vw;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <script type="module" src="../index.js"></script>
+    <script type="module" src="../menu-items.js"></script>
+    <script type="module" src="../questions-answers.js"></script>
+    <title>Menu Generator Game</title>
+</head>
+<body>
+<!-- js: desktop version: have the whole thing on a grid with 1 column and several rows? -->
+
+<!-- SECTION 1: WELCOME SCREEN -->
+    <section id="welcomeScreen">
+        <h1>Menu Generator Game</h1>
+        <p>You’re a waiter in a busy restaurant that offers a lot of choices. 
+            Help your customer choose the menu that is best suited for them</p>
+        <button>Start Playing</button>
+        </section>
+        <!-- in css: give this a z-level so that it shows up on top of everything -->
+        <!-- in css: give this a background image -->
+        <!-- clicking on button should add a class that makes display = none (disappears) -->
+
+<!-- SECTION 2: PLAY SCREEN -->
+    <section id="playScreen">
+
+    <!-- SECTION 2a: QUESTION SECTION -->
+        <p id="question">placeholder: "Waiter, I'm vegetarian. Can you please suggest a menu?"</p>
+    
+    <!-- SECTION 2b: MENU ITEMS -->
+        <section id="menuItemsSection">
+            <h2>Select from these menu items</h2>
+            <div id="filterSort">
+                <button id="filter">Filter</button>
+                <button id="sort">Sort</button>
+            </div>
+
+            <div id="tableBox">
+                <table id="fullMenuTable">
+                    <tr class="menuItem">
+                        <td class="col1">Item Name 1 is super long and doesn't fit 1 line</td>
+                        <td class="col2">App</td>
+                        <td class="col3">$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 2</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 3</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 4 is super long and doesn't fit 1 line</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 5</td>
+                        <td>App</td>
+                        <td>$10</td>                  
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 6 is super long and doesn't fit 1 line</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 7</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 8</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>                      
+                    <tr class="menuItem">
+                        <td>Item Name 9</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 10</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                    <tr class="menuItem">
+                        <td>Item Name 11</td>
+                        <td>App</td>
+                        <td>$10</td>
+                    </tr>
+                </table>
+            </div>
+                    <!-- once I link this to js dom, may be able to only show 1-2 items in this file (don't need all 7) -->
+                    <!-- js: link to js file -->
+        </section>
+
+
+    <!-- SECTION 2c: PLAYER CHOICES -->
+        <section id="playerChoices">
+            <h2>Your Suggested Menu</h2>
+            <table id="playerChoicesTable">
+                <tr class="menuItem">
+                    <td class="col1">Item Name 2</td>
+                    <td class="col2">$10</td>
+                </tr>
+                <tr class="menuItem">
+                    <td>Item Name 4 is super long and doesn't fit 1 line</td>
+                    <td>$10</td>
+                </tr>
+                <tr class="menuItem">
+                    <td>Item Name 6</td>
+                    <td>$10</td>
+                </tr>
+            </table>
+        </section>
+        <!-- js: these itemes get filled in onclick for now (drag and drop later) -->
+        <!-- css: make this table a grid? -->
+
+    <!-- SECTION 2d: SUBMIT BUTTON -->
+        <button id="submit">Recommend now!</button>
+        
+    <!-- SECTION 2e: RESULTS -->
+        <p id="response">placeholder: sassy response text text text text text text text text text text </p>
+        <!-- js: will eventually need this to generate certain results based on what the player puts in -->
+    </section>
+
+
+</body>
+    </html>
