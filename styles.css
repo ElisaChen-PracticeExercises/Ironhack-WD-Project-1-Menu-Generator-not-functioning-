@@ -1,10 +1,10 @@
 :root {
     --light-text-color: white;
-    --header-footer-color: #CFD7C7;
-    --button-color: #70A9A1;
+    --header-footer-color: #70A9A1;
+    --button-color: #40798C;
     --border-color: #0B2027;
     --highlight-color: #F6F1D1;
-    /* set up fonts? */
+    /* set up more fonts? */
 }
 
 *{
@@ -15,7 +15,6 @@
 }
 
 /* SECTION 1: WELCOME SCREEN */
-/* deal with this at the end */
 #welcomeScreen {
     background-image: url("../images/resto-entrance.jpg");
     background-size: cover;
@@ -42,7 +41,7 @@ button#start, button#submit {
     background-color: var(--button-color);
     border: 1px solid;
     border-radius: 5px;
-    box-shadow: 3px 3px 10px black;
+    box-shadow: 3px 3px 10px var(--border-color);
     font-size: 18px;
     font-weight: bold;
     height: 50px;
@@ -68,7 +67,7 @@ button#start, button#submit {
 /* SECTION 2b: MENU ITEMS */
 h2 {
     color: var(--light-text-color);
-    text-shadow: 1px 1px 4px var(--border-color);
+    text-shadow: 1px 1px 10px var(--border-color);
     text-align: center;
     padding: 10px 0px;
 }
@@ -78,12 +77,12 @@ h2 {
     font-size: 12px;
     font-weight: bold;
     padding: 0px 5px;
-    text-shadow: 1px 1px 2px var(--light-text-color);
+    text-shadow: 1px 1px 5px var(--light-text-color);
 }
 #tableBox {
     border: 1px solid var(--border-color);
     background-color: var(--light-text-color);
-    box-shadow: 3px 3px 10px black;
+    box-shadow: 3px 3px 10px var(--border-color);
     height: 30vh;
     overflow-y: scroll;
     width: 100%;
@@ -106,8 +105,8 @@ h2 {
 
 /* SECTION 2c: PLAYER CHOICES */
 #playerChoicesTable {
-    background-color: var(--light-text-color);
-    box-shadow: 3px 3px 10px black;
+    background-color: var(--highlight-color);
+    box-shadow: 3px 3px 10px var(--border-color);
     border-collapse: separate;
     border-spacing: 5px 10px;
     padding: 5px;
