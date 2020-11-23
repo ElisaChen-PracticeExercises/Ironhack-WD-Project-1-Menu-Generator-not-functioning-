@@ -3,6 +3,7 @@
     --header-footer-color: #CFD7C7;
     --button-color: #70A9A1;
     --border-color: #0B2027;
+    --highlight-color: #F6F1D1;
     /* set up fonts? */
 }
 
@@ -19,8 +20,7 @@
     background-image: url("../images/resto-entrance.jpg");
     background-size: cover;
     height: 100vh;
-    /* toggle between display flex and none to work on this */
-    display: none;
+    display: none; /* toggle between display flex and none to work on this */
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -38,9 +38,11 @@
     font-size: 24px;
     text-align: center;
 }
-button {
+button#start, button#submit {
     background-color: var(--button-color);
     border: 1px solid;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px black;
     font-size: 18px;
     font-weight: bold;
     height: 50px;
@@ -52,11 +54,6 @@ button {
     background-image: url("../images/obermamma-interior.jpg");
     background-size: cover;
     height: 100vh;
-    /* toggle between display flex and none to work on this */
-    display: flex;  
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
 }
 
 /* SECTION 2a: QUESTION SECTION */
@@ -66,7 +63,6 @@ button {
     font-weight: bold;
     text-align: center;
     padding: 20px;
-    width: 100vw;
 }
 
 /* SECTION 2b: MENU ITEMS */
@@ -80,17 +76,14 @@ h2 {
     background-color: transparent;
     border: none;
     font-size: 12px;
-    height: auto;
+    font-weight: bold;
     padding: 0px 5px;
     text-shadow: 1px 1px 2px var(--light-text-color);
-    width: auto;
-}
-#menuItemsSection {
-    width: 90vw;
 }
 #tableBox {
     border: 1px solid var(--border-color);
     background-color: var(--light-text-color);
+    box-shadow: 3px 3px 10px black;
     height: 30vh;
     overflow-y: scroll;
     width: 100%;
@@ -112,14 +105,14 @@ h2 {
 
 
 /* SECTION 2c: PLAYER CHOICES */
-
 #playerChoicesTable {
     background-color: var(--light-text-color);
-    width: 90vw;
+    box-shadow: 3px 3px 10px black;
     border-collapse: separate;
     border-spacing: 5px 10px;
     padding: 5px;
 }
+
 .playerChoicesTable .col1 {
     width: 80%;
 }   
@@ -137,5 +130,67 @@ h2 {
     font-weight: bold;
     text-align: center;
     padding: 20px;
-    width: 100vw;
+}
+
+/* MEDIA QUERY */
+@media (max-width:599px) {
+    #playScreen {
+    display: flex; /* toggle between display flex and none to work on this */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    }
+    #question {
+        width: 100vw;
+    }
+    #menuItemsSection {
+        width: 90vw;
+    }
+    #playerChoicesTable {
+        width: 90vw;
+    }
+    #response {
+        width: 100vw;
+    }
+}
+
+@media (min-width: 600px) {
+    #playScreen {
+        display: grid;   /* toggle between display grid and none to work on this */
+        grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
+        grid-template-rows: 1fr 4fr 1fr 1fr;
+    }
+    #question { 
+        grid-column: 1 / 6; 
+        grid-row: 1 / 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #menuItemsSection {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3 ;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;    
+    }
+    #playerChoices {
+        grid-column: 4 / 5;
+        grid-row: 2 / 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #submit {
+        grid-column: 2 / 5;
+        grid-row: 3 / 4;
+        margin: 0 auto;
+    }
+    #response {
+        grid-column: 1 / 6;
+        grid-row: 4 / 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

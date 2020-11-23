@@ -17,7 +17,7 @@
         <h1>Menu Generator Game</h1>
         <p>You’re a waiter in a busy restaurant that offers a lot of choices. 
             Help your customer choose the menu that is best suited for them</p>
-        <button>Start Playing</button>
+        <button id="start">Start Playing</button>
         </section>
         <!-- in css: give this a z-level so that it shows up on top of everything -->
         <!-- in css: give this a background image -->
@@ -27,7 +27,9 @@
     <section id="playScreen">
 
     <!-- SECTION 2a: QUESTION SECTION -->
-        <p id="question">placeholder: "Waiter, I'm vegetarian. Can you please suggest a menu?"</p>
+    <div id="question">
+        <p id="questionText">placeholder: "Waiter, I'm vegetarian. Can you please suggest a menu?"</p>
+    </div>
     
     <!-- SECTION 2b: MENU ITEMS -->
         <section id="menuItemsSection">
@@ -126,8 +128,10 @@
         <button id="submit">Recommend now!</button>
         
     <!-- SECTION 2e: RESULTS -->
-        <p id="response">placeholder: sassy response text text text text text text text text text text </p>
+    <div id="response">
+        <p id="responseText">placeholder: sassy response text text text text text text text text text text </p>
         <!-- js: will eventually need this to generate certain results based on what the player puts in -->
+    </div>
     </section>
 
 
