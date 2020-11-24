@@ -34,7 +34,7 @@ const ricottaCarrots = new MenuItem({
     richness: 2,   
 });
 
-let pateEnCroute = new MenuItem({
+const pateEnCroute = new MenuItem({
     name: 'Paté en croute',
     category: 'APP',
     price: 12,
@@ -51,7 +51,7 @@ let pateEnCroute = new MenuItem({
     richness: 4    
 })
 
-let eggplantCaviar = new MenuItem({
+const eggplantCaviar = new MenuItem({
     name: 'Eggplant caviar',
     category: 'APP',
     price: 7,
@@ -68,7 +68,7 @@ let eggplantCaviar = new MenuItem({
     richness: 1    
 })
 
-let baconScone = new MenuItem({
+const baconScone = new MenuItem({
     name: 'Bacon scone with maple syrup and clotted cream',
     category: 'APP',
     price: 9,
@@ -85,7 +85,7 @@ let baconScone = new MenuItem({
     richness: 4    
 })
 
-let caesarSalad = new MenuItem({
+const caesarSalad = new MenuItem({
     name: 'Caesar salad',
     category: 'APP',
     price: 9,
@@ -102,7 +102,7 @@ let caesarSalad = new MenuItem({
     richness: 3    
 })
 
-let vitelloTonnato = new MenuItem({
+const vitelloTonnato = new MenuItem({
     name: 'Vitello tonnato',
     category: 'APP',
     price: 11,
@@ -119,7 +119,7 @@ let vitelloTonnato = new MenuItem({
     richness: 4    
 })
 
-let chickenTagine = new MenuItem({
+const chickenTagine = new MenuItem({
     name: 'Chicken Tagine with Bulgour',
     category: 'MAIN',
     price: 19,
@@ -136,7 +136,7 @@ let chickenTagine = new MenuItem({
     richness: 3    
 })
 
-let blanquetteVeau = new MenuItem({
+const blanquetteVeau = new MenuItem({
     name: 'Blanquette de veau',
     category: 'MAIN',
     price: 21,
@@ -153,7 +153,7 @@ let blanquetteVeau = new MenuItem({
     richness: 4    
 })
 
-let fennelGratin = new MenuItem({
+const fennelGratin = new MenuItem({
     name: 'Fennel gratin with olives and confit lemon',
     category: 'MAIN',
     price: 16,
@@ -170,7 +170,7 @@ let fennelGratin = new MenuItem({
     richness: 3    
 })
 
-let thaiGreenCurry = new MenuItem({
+const thaiGreenCurry = new MenuItem({
     name: 'Thai green curry',
     category: 'MAIN',
     price: 17,
@@ -187,7 +187,7 @@ let thaiGreenCurry = new MenuItem({
     richness: 2    
 })
 
-let scallopsLeeks = new MenuItem({
+const scallopsLeeks = new MenuItem({
     name: 'Scallops with buttered leeks',
     category: 'MAIN',
     price: 28,
@@ -204,7 +204,7 @@ let scallopsLeeks = new MenuItem({
     richness: 2    
 })
 
-let pithiviers = new MenuItem({
+const pithiviers = new MenuItem({
     name: 'Pithiviers',
     category: 'MAIN',
     price: 27,
@@ -221,7 +221,7 @@ let pithiviers = new MenuItem({
     richness: 5    
 })
 
-let pumpkinTortellini = new MenuItem({
+const pumpkinTortellini = new MenuItem({
     name: 'Pumpkin and Ricotta Tortellini',
     category: 'MAIN',
     price: 18,
@@ -238,7 +238,7 @@ let pumpkinTortellini = new MenuItem({
     richness: 3    
 })
 
-let chocolateCake = new MenuItem({
+const chocolateCake = new MenuItem({
     name: 'Chocolate cake with vanilla bourbon ice cream',
     category: 'SWEET',
     price: 8,
@@ -255,7 +255,7 @@ let chocolateCake = new MenuItem({
     richness: 4    
 })
 
-let babaAuRhum = new MenuItem({
+const babaAuRhum = new MenuItem({
     name: 'Baba au rhum',
     category: 'SWEET',
     price: 10,
@@ -272,7 +272,7 @@ let babaAuRhum = new MenuItem({
     richness: 4    
 })
 
-let tiramisu = new MenuItem({
+const tiramisu = new MenuItem({
     name: 'Tiramisu',
     category: 'SWEET',
     price: 8,
@@ -289,7 +289,7 @@ let tiramisu = new MenuItem({
     richness: 4    
 })
 
-let chocChipCookies = new MenuItem({
+const chocChipCookies = new MenuItem({
     name: 'Chocolate chip cookies',
     category: 'SWEET',
     price: 6,
@@ -306,7 +306,7 @@ let chocChipCookies = new MenuItem({
     richness: 3    
 })
 
-let poachedPears = new MenuItem({
+const poachedPears = new MenuItem({
     name: 'Poached pears',
     category: 'SWEET',
     price: 9,
@@ -323,7 +323,7 @@ let poachedPears = new MenuItem({
     richness: 1    
 })
 
-let pineappleCarpaccio = new MenuItem({
+const pineappleCarpaccio = new MenuItem({
     name: 'Pineapple Carpaccio',
     category: 'SWEET',
     price: 7,
@@ -340,20 +340,26 @@ let pineappleCarpaccio = new MenuItem({
     richness: 1    
 })
 
-// template for new items
-// let newItem = new MenuItem({
-//     name: '',
-//     category: '',
-//     price: 0,
-//     containsFish: true,
-//     containsCrustacean: true,
-//     containsCheese: true,
-//     containsLactose: true,
-//     glutenFree: true,
-//     vegetarian: true,
-//     containsAlcohol: true,
-//     containsRaw: true,
-//     halal: true,
-//     kosher: true,
-//     richness: 1    
-// })
+ let allMenuItems = []
+ allMenuItems.push(ricottaCarrots)
+ allMenuItems.push(pateEnCroute)
+ allMenuItems.push(eggplantCaviar)
+ allMenuItems.push(baconScone)
+ allMenuItems.push(caesarSalad)
+ allMenuItems.push(vitelloTonnato)
+ allMenuItems.push(chickenTagine)
+ allMenuItems.push(blanquetteVeau)
+ allMenuItems.push(fennelGratin)
+ allMenuItems.push(thaiGreenCurry)
+ allMenuItems.push(scallopsLeeks)
+ allMenuItems.push(pithiviers)
+ allMenuItems.push(pumpkinTortellini)
+ allMenuItems.push(chocolateCake)
+ allMenuItems.push(tiramisu)
+ allMenuItems.push(babaAuRhum)
+ allMenuItems.push(chocChipCookies)
+ allMenuItems.push(poachedPears)
+ allMenuItems.push(pineappleCarpaccio)
+
+ export {allMenuItems}
+//  console.log(allMenuItems[7])

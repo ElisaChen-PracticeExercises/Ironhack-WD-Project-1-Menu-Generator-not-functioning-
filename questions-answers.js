@@ -56,7 +56,7 @@ let glutenFree = new Prompt ({
     rightAnswer: "Ooh, that sounds lovely. "
 });
 
-let newPrompt = new Prompt ({
+let lighter = new Prompt ({
     question: "I'm trying to eat lighter. What would you recommend?",
     wrongAnswer: "Did you not hear me when I said 'lighter'? Not 'richer'! ",
     rightAnswer: "That sounds like the perfect meal for my diet!"
@@ -69,14 +69,23 @@ let noAlcohol = new Prompt ({
 });
 
 let pregnant = new Prompt ({
-    question: "I'm pregnant and can't eat any raw or uncooked foods. What do you suggest?",
-    wrongAnswer: "Are you trying to give me listeriosis?",
+    question: "I'm pregnant and can't eat any raw or uncooked foods or alcohol. What do you suggest?",
+    wrongAnswer: "Are you trying to kill my baby?!",
     rightAnswer: "Thanks for helping me navigating these restrictions!"
 });
 
-// template for new prompts 
-// let newPrompt = new Prompt ({
-//     question: '',
-//     wrongAnswer: '',
-//     rightAnswer: ''
-// });
+let allPrompts = [];
+allPrompts.push(vegetarian);
+allPrompts.push(fishAllergy);
+allPrompts.push(crustaceanAllergy);
+allPrompts.push(noCheese);
+allPrompts.push(lactoseIntolerant);
+allPrompts.push(halal);
+allPrompts.push(kosher);
+allPrompts.push(glutenFree);
+allPrompts.push(lighter);
+allPrompts.push(noAlcohol);
+allPrompts.push(pregnant);
+
+// console.log(allPrompts)
+export {allPrompts}

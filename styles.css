@@ -19,7 +19,7 @@
     background-image: url("../images/resto-entrance.jpg");
     background-size: cover;
     height: 100vh;
-    display: none; /* toggle between display flex and none to work on this */
+    display: flex; /* toggle between display flex and none to work on this */
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -27,13 +27,13 @@
 }
 #welcomeScreen h1{
     font-size: 42px;
-    text-shadow: 1px 1px 2px var(--border-color);
+    text-shadow: 1px 1px 10px var(--border-color);
     color: white;
     text-align: center;
 }
 #welcomeScreen p {
     color: white;
-    text-shadow: 1px 1px 2px var(--border-color);
+    text-shadow: 1px 1px 10px var(--border-color);
     font-size: 24px;
     text-align: center;
 }
@@ -94,12 +94,6 @@ h2 {
 }
 .menuItem{
     vertical-align: top;
-}
-.menuItem .col1 {
-    width: 70%;
-}
-.menuItem .col2, .menuItem .col3 {
-    width: 15%;
 }
 
 
