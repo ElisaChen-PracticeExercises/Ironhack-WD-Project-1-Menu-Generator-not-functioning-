@@ -6,21 +6,19 @@ const startBtn = document.getElementById("start")
 const welcomeScreen = document.getElementById("welcomeScreen")
 const playScreen = document.getElementById("playScreen") 
 const menuTable = document.getElementById("fullMenuTable")
+const playerChoices = document.getElementById("playerChoicesTable")
+
 
 // // // FUNCTIONS
 
-function initWelcomeScreen() {
-    welcomeScreen.style.display = "flex"
-}
+function initWelcomeScreen() {welcomeScreen.style.display = "flex"}
 
 function initPlayScreen() {
     playScreen.style.display = "none"
     //NEED TO FIX THIS FOR MEDIA QUERY
 }
 
-function hideWelcomeScreen() {
-    welcomeScreen.style.display = "none"
-}
+function hideWelcomeScreen() {welcomeScreen.style.display = "none"}
 
 function showPlayScreen() {
     playScreen.style.display = "flex"
@@ -29,6 +27,7 @@ function showPlayScreen() {
 
 // load menu items 
 function loadMenuItems(array) {
+    // add to Menu Items table
     array.forEach((element) => {
     let newItem = document.createElement('tr');
     newItem.classList.add("menuItem");
@@ -46,47 +45,97 @@ function loadMenuItems(array) {
     newItem.appendChild(price);
 
     menuTable.appendChild(newItem);
-})};
+    });
+};
 
-// shuffle a random prompt 
+// shuffle a random prompt
+function printPrompt() {}
 
-// shuffle menu items? 
 // select menu item (highlight in menu)
+function highlightItem(targetRow) {
+    if (targetRow.classList.contains("selected")) {
+        targetRow.parentNode.style.color = "lightgray"
+    } else {
+        targetRow.parentNode.style.color = "black"
+    }
+}
+
 // add menu item to player choices 
+function addItemToChoices(targetRow) {
+    if (targetRow.classList.contains("selected")) {
+        let playerChoice = document.createElement('tr');
+        playerChoice.classList.add("playerChoice");
+
+        let name = document.createElement('td');
+        name.textContent = targetRow.parentNode.firstChild.textContent;
+        playerChoice.appendChild(name);
+
+        let price = document.createElement('td')
+        price.textContent = targetRow.parentNode.lastChild.textContent;
+        playerChoice.appendChild(price);
+
+        let trash = document.createElement('td');
+        trash.textContent = "remove";
+        trash.classList.add("trash")
+        trash.onclick = (evt) => {removeItemFromChoices(evt);}
+        playerChoice.appendChild(trash);
+
+        playerChoices.appendChild(playerChoice);
+    }
+}
+
+function removeItemFromChoices(event) {
+    event.target.parentNode.remove();
+}
 // generate response
 
+// shuffle menu items? 
 // filter menu items 
 // sort menu items 
 
 
 // // // FLOW LOGIC
 
+loadMenuItems(allMenuItems);
+
 // INITIALIZE WELCOME SCREEN
 window.onload = () => {
-    initWelcomeScreen()
-    initPlayScreen
+    initWelcomeScreen();
+    initPlayScreen;
+    printPrompt();    
 }
 
 // MOVE TO PLAY SCREEN
 startBtn.onclick = () => {
     hideWelcomeScreen();
     showPlayScreen();
-    loadMenuItems(allMenuItems);
     // shuffle the menu items ?
-    // player choices should be empty to start
     // recomend now button should be gray with grey text and not clickable
-    // shuffle a random prompt
 }
 
-
 // PLAYER MAKES 3 MENU CHOICES 
+const menuItemRow = [... document.querySelectorAll(".menuItem")]
+menuItemRow.forEach(row => row.onclick = (evt) => {
+    evt.target.classList.toggle("selected");
+    highlightItem(evt.target)
+    addItemToChoices(evt.target)
+    activateTrashBtn()
+})
+
+const trashBtn = [... document.querySelectorAll(".trash")]
+function activateTrashBtn() {
+    trashBtn.forEach(button => button.onclick = (evt) => {
+    removeItemFromChoices(evt);
+})};
+
+console.log(trashBtn)
+
 // event listener: on click of menu items, item gets highlighted and added to playerchoice list
+// limit adds to 3 items 
 // once you hit three items, recommend now button turns blue with a little animation to show it's clickable
 
 // PLAYER SUBMITS CHOICES 
 // event listener: on click of submit button, generate a response based on the items shown
-
-
 
 
 
@@ -102,6 +151,3 @@ startBtn.onclick = () => {
 // pop up a form that they can click on 
 // click on attribute they want to sort by
 // sorts the items 
-
-
-

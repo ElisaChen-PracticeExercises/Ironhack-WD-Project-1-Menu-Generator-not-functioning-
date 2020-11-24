@@ -31,7 +31,7 @@ const ricottaCarrots = new MenuItem({
     containsRaw: false,
     halal: true,
     kosher: true,
-    richness: 2,   
+    richness: 2,  
 });
 
 const pateEnCroute = new MenuItem({
