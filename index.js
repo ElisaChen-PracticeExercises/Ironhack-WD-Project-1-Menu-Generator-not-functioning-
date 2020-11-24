@@ -11,7 +11,7 @@ const question = document.getElementById("question")
 const submitBtn = document.getElementById("submit")
 const responseDiv = document.getElementById("response")
 const response = document.getElementById("responseText")
-const resetBtn = document.getElementById("reset")
+const newPromptBtn = document.getElementById("newPrompt")
 let selectedItems = [] // gets filled in with prompt below
 let selectedPrompt // gets filled in with a random prompt with printPrompt function
 
@@ -92,7 +92,7 @@ function selectItem(target) {
 function saveResponses() {
     let selection = [... document.querySelectorAll(".selected")]
     selectedItems = [];
-    for (let i=0; i<3; i++) {
+    for (let i=0; i<selection.length; i++) {
         allMenuItems.forEach(item => {
             if (item.name === selection[i].firstChild.textContent){
                 selectedItems.push(item)
@@ -177,7 +177,7 @@ submitBtn.onclick = () => {
     showResponseSection()
 }
 
-resetBtn.onclick = () => {
+newPromptBtn.onclick = () => {
     printPrompt(allPrompts);
     clearSelection()  
     clearResponse()
