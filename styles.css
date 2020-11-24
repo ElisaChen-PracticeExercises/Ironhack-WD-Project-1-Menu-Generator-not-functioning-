@@ -99,16 +99,21 @@ h2 {
 
 
 /* SECTION 2c: PLAYER CHOICES */
-#playerChoicesTable {
+/* #playerChoicesTable {
     background-color: var(--highlight-color);
     box-shadow: 3px 3px 10px var(--border-color);
     border-collapse: separate;
     border-spacing: 5px 10px;
     padding: 5px;
     text-align: center;
-}
+} */
 
 /* SECTION 2d: SUBMIT BUTTON */
+#reset {
+    color: lightslategray;
+    text-align: center;
+    text-shadow: 1px 1px 10px var(--light-text-colorr);
+}
 
 /* SECTION 2e: RESULTS */
 #response {

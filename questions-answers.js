@@ -6,6 +6,13 @@ class Prompt {
         this.wrongAnswer = info.wrongAnswer;
         this.rightAnswer = info.rightAnswer;
     }
+
+    response(boolean) {
+        let response;
+        if (boolean) {response = this.rightAnswer}
+        else (response = this.wrongAnswer)
+        return response
+    }
 }
 
 let vegetarian = new Prompt ({
@@ -21,7 +28,7 @@ let fishAllergy = new Prompt ({
 });
 
 let crustaceanAllergy = new Prompt ({
-    question: "I can't eat any shellfish. Can you recommend somethign for me?",
+    question: "I can't eat any shellfish. Can you recommend something for me?",
     wrongAnswer: "No way, that's going to send me to the hospital!",
     rightAnswer: "Wonderful, that should work for me!"
 });
@@ -87,5 +94,5 @@ allPrompts.push(lighter);
 allPrompts.push(noAlcohol);
 allPrompts.push(pregnant);
 
-// console.log(allPrompts)
+// console.log(noAlcohol.response(false))
 export {allPrompts}

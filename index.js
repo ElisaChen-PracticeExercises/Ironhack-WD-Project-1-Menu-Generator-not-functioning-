@@ -7,9 +7,28 @@ const welcomeScreen = document.getElementById("welcomeScreen")
 const playScreen = document.getElementById("playScreen") 
 const menuTable = document.getElementById("fullMenuTable")
 const playerChoices = document.getElementById("playerChoicesTable")
+const question = document.getElementById("question")
+const submitBtn = document.getElementById("submit")
+const response = document.getElementById("responseText")
+const resetBtn = document.getElementById("reset")
+let selectedItems = [] // gets filled in with prompt below
+let selectedPrompt // gets filled in with a random prompt with printPrompt function
+
 
 
 // // // FUNCTIONS
+
+function getRandomInteger(number) {
+  return Math.floor(Math.random() * Math.floor(number));
+}
+
+// shuffle a random prompt
+function printPrompt(array) {
+    let index = getRandomInteger(array.length)
+    selectedPrompt = array[index]
+    question.textContent = selectedPrompt.question
+    return index
+}
 
 function initWelcomeScreen() {welcomeScreen.style.display = "flex"}
 
@@ -49,29 +68,59 @@ function loadMenuItems(array) {
     });
 };
 
-// shuffle a random prompt
-function printPrompt() {}
-
 // select menu item (highlight in menu)
 function selectItem(target) {
     if (target.classList.contains("selected")) {
-        playerChoices.innerHTML += target.closest('tr').innerHTML
-        target.closest('tr').style.backgroundColor = "#F6F1D1"
-        target.closest('tr').style.fontWeight = "bold"
+        target.style.backgroundColor = "#F6F1D1"
+        target.style.fontWeight = "bold"
     } else {
-        target.closest('tr').style.backgroundColor = "white"
-        target.closest('tr').style.fontWeight = "normal"
+        target.style.backgroundColor = "white"
+        target.style.fontWeight = "normal"
     }
 }
 
-// add menu item to player choices 
-function removeItemFromChoices(target) {
-    if (target.classList.contains("selected")) {
-        menuTable.innerHTML += target.closest('tr').innerHTML
-        target.closest('tr').remove()
+
+function saveResponses() {
+    let selection = [... document.querySelectorAll(".selected")]
+    selectedItems = [];
+    for (let i=0; i<3; i++) {
+        allMenuItems.forEach(item => {
+            if (item.name === selection[i].firstChild.textContent){
+                selectedItems.push(item)
+            }
+        })
     }
+    console.log(selectedItems)
+    return selectedItems
 }
+
 // generate response
+// evaluate choices - create a function to check for each of the prompts
+function isVegetarian() {
+    let isVegetarianEval = []
+    selectedItems.forEach(item =>  isVegetarianEval.push(item.vegetarian) )
+    let isTrue = isVegetarianEval.every((el) => el === true)
+    // console.log(isVegetarianEval)
+    // console.log(isTrue)
+    return isTrue
+}
+
+function judgeResponses() {}
+
+function printResult(boolean) {
+    response.textContent = selectedPrompt.response(boolean)
+}
+
+// reset button: generate new prompt, remove all selected classes
+function clearSelection() {
+    let selected = [... document.querySelectorAll(".selected")]
+    selected.forEach(element => {
+        element.classList.remove("selected")
+        selectItem(element)
+    })
+}
+
+function clearResponse() {response.textContent = ""}
 
 // shuffle menu items? 
 // filter menu items 
@@ -86,13 +135,13 @@ loadMenuItems(allMenuItems);
 window.onload = () => {
     initWelcomeScreen();
     initPlayScreen;
-    printPrompt();    
 }
 
 // MOVE TO PLAY SCREEN
 startBtn.onclick = () => {
     hideWelcomeScreen();
     showPlayScreen();
+    printPrompt(allPrompts);    
     // shuffle the menu items ?
     // recomend now button should be gray with grey text and not clickable
 }
@@ -100,27 +149,29 @@ startBtn.onclick = () => {
 // PLAYER MAKES 3 MENU CHOICES 
 const menuItemRow = [... document.querySelectorAll(".menuItem")]
 menuItemRow.forEach(row => row.onclick = (evt) => {
-    evt.target.classList.toggle("selected");
-    selectItem(evt.target)
+// NEED TO LIMIT THIS TO 3 CHOICES
+    if ([...(document.querySelectorAll(".selected"))].length < 3) {
+        evt.target.closest("tr").classList.toggle("selected");
+        selectItem(evt.target.closest("tr"))
+    } else {
+        evt.target.closest("tr").classList.remove("selected");
+        selectItem(evt.target.closest("tr"))
+    }
 })
 
-// THIS DOESN'T GET CONSTRUCTED FOR NEW ELEMENTS?
-const playerChoiceRow = [... document.querySelectorAll(".playerChoicesTable tr")]
-playerChoiceRow.forEach(row => row.onclick = (evt) => {
-    evt.target.classList.toggle("selected");
-    removeItemFromChoices(evt.target)
-})
-
-
-
-// event listener: on click of menu items, item gets highlighted and added to playerchoice list
-// limit adds to 3 items 
-// once you hit three items, recommend now button turns blue with a little animation to show it's clickable
 
 // PLAYER SUBMITS CHOICES 
-// event listener: on click of submit button, generate a response based on the items shown
+submitBtn.onclick = () => {
+    saveResponses()
+    judgeResponses() // NEED TO FIX returns a boolean based on conditions of the specifc prompt
+    printResult(false)
+}
 
-
+resetBtn.onclick = () => {
+    printPrompt(allPrompts);
+    clearSelection()  
+    clearResponse()  
+}
 
 // FOR LATER
 // FILTER ITEMS
