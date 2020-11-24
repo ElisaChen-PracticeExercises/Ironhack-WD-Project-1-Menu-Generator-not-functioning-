@@ -362,4 +362,8 @@ const pineappleCarpaccio = new MenuItem({
  allMenuItems.push(pineappleCarpaccio)
 
  export {allMenuItems}
-//  console.log(allMenuItems[7])
+
+// console.log(allMenuItems[1].halal)
+// allMenuItems[1].halal = !allMenuItems[1].halal
+// console.log(allMenuItems[1].halal)
+

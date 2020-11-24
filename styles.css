@@ -85,6 +85,7 @@ h2 {
     box-shadow: 3px 3px 10px var(--border-color);
     height: 30vh;
     overflow-y: scroll;
+    text-align: center;
     width: 100%;
 }
 #fullMenuTable{
@@ -104,6 +105,7 @@ h2 {
     border-collapse: separate;
     border-spacing: 5px 10px;
     padding: 5px;
+    text-align: center;
 }
 
 /* SECTION 2d: SUBMIT BUTTON */

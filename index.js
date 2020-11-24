@@ -29,6 +29,7 @@ function showPlayScreen() {
 function loadMenuItems(array) {
     // add to Menu Items table
     array.forEach((element) => {
+// CAN I CREATE A CLASS METHOD FOR THE LINES BELOW?
     let newItem = document.createElement('tr');
     newItem.classList.add("menuItem");
 
@@ -52,40 +53,23 @@ function loadMenuItems(array) {
 function printPrompt() {}
 
 // select menu item (highlight in menu)
-function highlightItem(targetRow) {
-    if (targetRow.classList.contains("selected")) {
-        targetRow.parentNode.style.color = "lightgray"
+function selectItem(target) {
+    if (target.classList.contains("selected")) {
+        playerChoices.innerHTML += target.closest('tr').innerHTML
+        target.closest('tr').style.backgroundColor = "#F6F1D1"
+        target.closest('tr').style.fontWeight = "bold"
     } else {
-        targetRow.parentNode.style.color = "black"
+        target.closest('tr').style.backgroundColor = "white"
+        target.closest('tr').style.fontWeight = "normal"
     }
 }
 
 // add menu item to player choices 
-function addItemToChoices(targetRow) {
-    if (targetRow.classList.contains("selected")) {
-        let playerChoice = document.createElement('tr');
-        playerChoice.classList.add("playerChoice");
-
-        let name = document.createElement('td');
-        name.textContent = targetRow.parentNode.firstChild.textContent;
-        playerChoice.appendChild(name);
-
-        let price = document.createElement('td')
-        price.textContent = targetRow.parentNode.lastChild.textContent;
-        playerChoice.appendChild(price);
-
-        let trash = document.createElement('td');
-        trash.textContent = "remove";
-        trash.classList.add("trash")
-        trash.onclick = (evt) => {removeItemFromChoices(evt);}
-        playerChoice.appendChild(trash);
-
-        playerChoices.appendChild(playerChoice);
+function removeItemFromChoices(target) {
+    if (target.classList.contains("selected")) {
+        menuTable.innerHTML += target.closest('tr').innerHTML
+        target.closest('tr').remove()
     }
-}
-
-function removeItemFromChoices(event) {
-    event.target.parentNode.remove();
 }
 // generate response
 
@@ -117,18 +101,17 @@ startBtn.onclick = () => {
 const menuItemRow = [... document.querySelectorAll(".menuItem")]
 menuItemRow.forEach(row => row.onclick = (evt) => {
     evt.target.classList.toggle("selected");
-    highlightItem(evt.target)
-    addItemToChoices(evt.target)
-    activateTrashBtn()
+    selectItem(evt.target)
 })
 
-const trashBtn = [... document.querySelectorAll(".trash")]
-function activateTrashBtn() {
-    trashBtn.forEach(button => button.onclick = (evt) => {
-    removeItemFromChoices(evt);
-})};
+// THIS DOESN'T GET CONSTRUCTED FOR NEW ELEMENTS?
+const playerChoiceRow = [... document.querySelectorAll(".playerChoicesTable tr")]
+playerChoiceRow.forEach(row => row.onclick = (evt) => {
+    evt.target.classList.toggle("selected");
+    removeItemFromChoices(evt.target)
+})
 
-console.log(trashBtn)
+
 
 // event listener: on click of menu items, item gets highlighted and added to playerchoice list
 // limit adds to 3 items 
