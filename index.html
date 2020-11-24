@@ -12,7 +12,6 @@
 <body>
 <!-- SECTION 1: WELCOME SCREEN -->
     <section id="welcomeScreen">
-        <!-- JS: clicking on button should add a class that makes display = none (disappears) -->
         <h1>Menu Generator Game</h1>
         <p>You’re a waiter in a busy restaurant that offers a lot of choices. 
             Help your customer choose the menu that is best suited for them</p>
@@ -21,7 +20,6 @@
 
 <!-- SECTION 2: PLAY SCREEN -->
     <section id="playScreen">
-        <!-- JS: toggle display none or flex to show...but will this interfere with media query? -->
 
     <!-- SECTION 2a: QUESTION SECTION -->
     <div id="question">
@@ -30,7 +28,7 @@
     
     <!-- SECTION 2b: MENU ITEMS -->
         <section id="menuItemsSection">
-            <h2>Choose up to 3 menu items</h2>
+            <h2>Please 3 menu items</h2>
             <div id="filterSort">
                 <button id="filter">Filter</button>
                 <button id="sort">Sort</button>
@@ -57,15 +55,14 @@
         <!-- js: these itemes get filled in onclick for now (drag and drop later) -->
 
     <!-- SECTION 2d: SUBMIT BUTTON -->
-    <div>
+    <div id="submitDiv">
         <button id="submit">Suggest your menu</button>
         <p id="reset">click here to try again</p>
     </div>
 
     <!-- SECTION 2e: RESULTS -->
     <div id="response">
-        <p id="responseText">placeholder: sassy response text text text text text text text text text text </p>
-        <!-- js: will eventually need this to generate certain results based on what the player puts in -->
+        <p id="responseText"></p>
     </div>
     </section>
 

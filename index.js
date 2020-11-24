@@ -9,6 +9,7 @@ const menuTable = document.getElementById("fullMenuTable")
 const playerChoices = document.getElementById("playerChoicesTable")
 const question = document.getElementById("question")
 const submitBtn = document.getElementById("submit")
+const responseDiv = document.getElementById("response")
 const response = document.getElementById("responseText")
 const resetBtn = document.getElementById("reset")
 let selectedItems = [] // gets filled in with prompt below
@@ -40,8 +41,17 @@ function initPlayScreen() {
 function hideWelcomeScreen() {welcomeScreen.style.display = "none"}
 
 function showPlayScreen() {
-    playScreen.style.display = "flex"
+    playScreen.style.display = "grid"
     //NEED TO FIX THIS FOR MEDIA QUERY
+}
+
+function hideResponseSection() {
+    responseDiv.style.backgroundColor = "transparent"
+}
+
+function showResponseSection() {
+    responseDiv.style.backgroundColor = "var(--header-footer-color)"
+
 }
 
 // load menu items 
@@ -79,7 +89,6 @@ function selectItem(target) {
     }
 }
 
-
 function saveResponses() {
     let selection = [... document.querySelectorAll(".selected")]
     selectedItems = [];
@@ -111,7 +120,6 @@ function printResult(boolean) {
     response.textContent = selectedPrompt.response(boolean)
 }
 
-// reset button: generate new prompt, remove all selected classes
 function clearSelection() {
     let selected = [... document.querySelectorAll(".selected")]
     selected.forEach(element => {
@@ -141,7 +149,8 @@ window.onload = () => {
 startBtn.onclick = () => {
     hideWelcomeScreen();
     showPlayScreen();
-    printPrompt(allPrompts);    
+    printPrompt(allPrompts); 
+    hideResponseSection()   
     // shuffle the menu items ?
     // recomend now button should be gray with grey text and not clickable
 }
@@ -164,13 +173,15 @@ menuItemRow.forEach(row => row.onclick = (evt) => {
 submitBtn.onclick = () => {
     saveResponses()
     judgeResponses() // NEED TO FIX returns a boolean based on conditions of the specifc prompt
-    printResult(false)
+    printResult(false) // NEED TO FIX probably use judgeResponses as the argument here
+    showResponseSection()
 }
 
 resetBtn.onclick = () => {
     printPrompt(allPrompts);
     clearSelection()  
-    clearResponse()  
+    clearResponse()
+    hideResponseSection()  
 }
 
 // FOR LATER
