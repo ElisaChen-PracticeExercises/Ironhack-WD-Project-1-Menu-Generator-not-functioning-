@@ -111,14 +111,14 @@ h2 {
 
 
 /* SECTION 2c: PLAYER CHOICES */
-/* #playerChoicesTable {
+#playerChoicesTable {
     background-color: var(--highlight-color);
     box-shadow: 3px 3px 10px var(--border-color);
     border-collapse: separate;
     border-spacing: 5px 10px;
     padding: 5px;
     text-align: center;
-} */
+}
 
 /* SECTION 2d: SUBMIT BUTTON */
 #newPrompt {
@@ -143,7 +143,7 @@ h2 {
 @media (max-width:599px) {
     #playScreen {
         grid-template-columns: 1fr 10fr 1fr;
-        grid-template-rows: 1fr 4fr 2fr 1fr;
+        grid-template-rows: 1fr 4fr 2fr 1fr 1fr;
     }
     #question {
         grid-column: 1 / 4;
@@ -162,21 +162,21 @@ h2 {
         flex-direction: column;
         justify-content: center;
     }
-    /* #playerChoices {
-        grid-column: 4 / 5;
-        grid-row: 2 / 3;
+    #playerChoices {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
         display: flex;
         flex-direction: column;
         justify-content: center;
-    } */
+    }
     #submitDiv {
         grid-column: 2 / 3;
-        grid-row: 3 / 4;
+        grid-row: 4 / 5;
         margin: 0 auto;
     }
     #response {
         grid-column: 1 / 4;
-        grid-row: 4 / 5;
+        grid-row: 5 / 6;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -186,7 +186,7 @@ h2 {
 @media (min-width: 600px) {
     #playScreen {
         grid-template-columns: 1fr 6fr 1fr 4fr 1fr;
-        grid-template-rows: 1fr 6fr 1fr;
+        grid-template-rows: 1fr 4fr 2fr 1fr;
     }
     #question { 
         grid-column: 1 / 6; 
@@ -200,21 +200,21 @@ h2 {
     }
     #menuItemsSection {
         grid-column: 2 / 3;
-        grid-row: 2 / 3 ;
+        grid-row: 2 / 4 ;
         display: flex;
         flex-direction: column;
         justify-content: center;    
     }
-    /* #playerChoices {
+    #playerChoices {
         grid-column: 4 / 5;
         grid-row: 2 / 3;
         display: flex;
         flex-direction: column;
         justify-content: center;
-    } */
+    }
     #submitDiv {
         grid-column: 4 / 5;
-        grid-row: 2 / 3;
+        grid-row: 3 / 4;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -222,7 +222,7 @@ h2 {
     }
     #response {
         grid-column: 1 / 6;
-        grid-row: 3 / 4;
+        grid-row: 4 / 5;
         display: flex;
         justify-content: center;
         align-items: center;

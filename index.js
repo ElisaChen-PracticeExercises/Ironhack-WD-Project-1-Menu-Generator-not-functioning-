@@ -12,6 +12,7 @@ const submitBtn = document.getElementById("submit")
 const responseDiv = document.getElementById("response")
 const response = document.getElementById("responseText")
 const newPromptBtn = document.getElementById("newPrompt")
+let htmlAllMenuItems = allMenuItems
 let selectedItems = [] // gets filled in with prompt below
 let selectedPrompt // gets filled in with a random prompt with printPrompt function
 
@@ -82,7 +83,7 @@ function saveResponses() {
     let selection = [... document.querySelectorAll(".selected")]
     selectedItems = [];
     for (let i=0; i<selection.length; i++) {
-        allMenuItems.forEach(item => {
+        htmlAllMenuItems.forEach(item => {
             if (item.name === selection[i].firstChild.textContent){
                 selectedItems.push(item)
             }
@@ -233,7 +234,7 @@ function clearResponse() {response.textContent = ""}
 // ********************************************************************************
 // // // FLOW LOGIC
 
-loadMenuItems(allMenuItems);
+loadMenuItems(htmlAllMenuItems);
 
 // INITIALIZE WELCOME SCREEN
 window.onload = () => {
