@@ -6,15 +6,33 @@ const startBtn = document.getElementById("start")
 const welcomeScreen = document.getElementById("welcomeScreen")
 const playScreen = document.getElementById("playScreen") 
 const menuTable = document.getElementById("fullMenuTable")
-const playerChoices = document.getElementById("playerChoicesTable")
+const playerChoicesTable = document.getElementById("playerChoicesTable")
 const question = document.getElementById("question")
 const submitBtn = document.getElementById("submit")
 const responseDiv = document.getElementById("response")
 const response = document.getElementById("responseText")
 const newPromptBtn = document.getElementById("newPrompt")
+let allDataCells // DOM selector for all data cells in menuItems table
+let allChoiceCells // DOM selector for all data cells in playerChoice table
 let htmlAllMenuItems = allMenuItems
+let playerChoices = []
 let selectedItems = [] // gets filled in with prompt below
 let selectedPrompt // gets filled in with a random prompt with printPrompt function
+
+
+// assign data attribute with itemName to each item/tr
+// on click of anything in allMenuItems:
+// 1) the item in htmlAllMenuItems with that itemName gets popped off and added to playerChoices
+// 2) the menuItems table gets re-rendered using the new htmlAllMenuItems (without that element)
+// 3) the playerChoicesTable gets re-rendered using the playerChoices array
+// 4) each tr of the playerChoicesTable gets appended with a trash button
+
+// if you click on the trash button in the playerChoicesTable:
+// 1) that item gets popped off of playerChoices and added back to htmlAllMenuItems
+// 2) menuItemsTable gets re-rendered
+// 3) playerChoicesTable gets re-rendered
+
+loadMenuItems(htmlAllMenuItems);
 
 
 // ********************************************************************************
@@ -39,15 +57,26 @@ function printPrompt(array) {
     selectedPrompt = array[index]
     question.textContent = selectedPrompt.question
 }
+
 function loadMenuItems(array) {
+    menuTable.innerHTML = ""
     array.forEach((element) => {
 // CAN I CREATE A CLASS METHOD FOR THE LINES BELOW?
     let newItem = document.createElement('tr');
     newItem.classList.add("menuItem");
-
-    let name = document.createElement('td');
-    name.textContent = element.name;
-    newItem.appendChild(name);
+    newItem.classList.add(element.name)
+    newItem.onclick = (evt) => {
+        if (playerChoices.length < 3) {
+        addItemToPlayerChoices(evt.target)
+        removeItemFromMenu(evt.target)
+        }
+        loadMenuItems(htmlAllMenuItems);
+        renderPlayerChoicesTable(playerChoices)
+    }
+// simplify using innerhtml
+    let desc = document.createElement('td');
+    desc.textContent = element.description;
+    newItem.appendChild(desc);
 
     let type = document.createElement('td');
     type.textContent = element.category;
@@ -59,7 +88,37 @@ function loadMenuItems(array) {
 
     menuTable.appendChild(newItem);
     });
+    allDataCells = [... document.querySelectorAll("#fullMenuTable td")]
 };
+function renderPlayerChoicesTable(array) {
+    playerChoicesTable.innerHTML = ""
+    array.forEach((element) => {
+    let newItem = document.createElement('tr');
+    newItem.classList.add("menuItem");
+    newItem.classList.add(element.name)
+    newItem.onclick = (evt) => {
+        addItemToMenu(evt.target)
+        removeItemFromPlayerChoices(evt.target)
+        loadMenuItems(htmlAllMenuItems);
+        renderPlayerChoicesTable(playerChoices)
+    }
+
+    let desc = document.createElement('td');
+    desc.textContent = element.description;
+    newItem.appendChild(desc);
+
+    let type = document.createElement('td');
+    type.textContent = element.category;
+    newItem.appendChild(type);
+
+    let price = document.createElement('td')
+    price.textContent = element.price;
+    newItem.appendChild(price);
+
+    playerChoicesTable.appendChild(newItem);
+    });
+    allChoiceCells = [... document.querySelectorAll("#playerChoicesTable td")]
+}
 function hideResponseSection() {
     responseDiv.style.backgroundColor = "transparent"
 }
@@ -70,26 +129,50 @@ function showResponseSection() {
 }
 
 // for the player to select items 
-function selectItem(target) {
-    if (target.classList.contains("selected")) {
-        target.style.backgroundColor = "#F6F1D1"
-        target.style.fontWeight = "bold"
-    } else {
-        target.style.backgroundColor = "white"
-        target.style.fontWeight = "normal"
-    }
+function addItemToPlayerChoices(clickedElement) {
+    if (playerChoices.length < 3) {
+        htmlAllMenuItems.forEach(item => {
+            if (clickedElement.closest("tr").classList.contains(item.name)) {
+                playerChoices.push(item);
+            }})}
 }
+function removeItemFromMenu(clickedElement) {
+    if (playerChoices.length < 3) {
+    htmlAllMenuItems = htmlAllMenuItems.filter(item => {
+        return !(clickedElement.closest("tr").classList.contains(item.name))
+    })}
+}
+function removeItemFromPlayerChoices(clickedElement) {
+    playerChoices = playerChoices.filter(item => {
+        return !(clickedElement.closest("tr").classList.contains(item.name))
+    })
+}
+function addItemToMenu(clickedElement) {
+    playerChoices.forEach(item => {
+        if (clickedElement.closest("tr").classList.contains(item.name)) {
+            htmlAllMenuItems.push(item);
+        }})
+}
+
+// function selectItem(target) {
+//     if (target.classList.contains("selected")) {
+//         target.style.backgroundColor = "#F6F1D1"
+//         target.style.fontWeight = "bold"
+//     } else {
+//         target.style.backgroundColor = "white"
+//         target.style.fontWeight = "normal"
+//     }
+// }
 function saveResponses() {
     let selection = [... document.querySelectorAll(".selected")]
     selectedItems = [];
     for (let i=0; i<selection.length; i++) {
         htmlAllMenuItems.forEach(item => {
-            if (item.name === selection[i].firstChild.textContent){
+            if (item.description === selection[i].firstChild.textContent){
                 selectedItems.push(item)
             }
         })
     }
-    console.log(selectedItems)
     return selectedItems
 }
 
@@ -210,11 +293,9 @@ function isCriteriaFulfilled(object) {
     }
     return trueOrFalse
 }
-
 function printResult(boolean) {
     response.textContent = selectedPrompt.response(boolean)
 }
-
 
 
 // for selecting a new prompt
@@ -234,7 +315,6 @@ function clearResponse() {response.textContent = ""}
 // ********************************************************************************
 // // // FLOW LOGIC
 
-loadMenuItems(htmlAllMenuItems);
 
 // INITIALIZE WELCOME SCREEN
 window.onload = () => {
@@ -253,16 +333,25 @@ startBtn.onclick = () => {
 }
 
 // PLAYER MAKES 3 MENU CHOICES 
-const menuItemRow = [... document.querySelectorAll(".menuItem")]
-menuItemRow.forEach(row => row.onclick = (evt) => {
-// NEED TO LIMIT THIS TO 3 CHOICES
-    if ([...(document.querySelectorAll(".selected"))].length < 3) {
-        evt.target.closest("tr").classList.toggle("selected");
-        selectItem(evt.target.closest("tr"))
-    } else {
-        evt.target.closest("tr").classList.remove("selected");
-        selectItem(evt.target.closest("tr"))
-    }
+// old functioning code for highlighting rows
+// const menuItemRow = [... document.querySelectorAll(".menuItem")]
+// menuItemRow.forEach(row => row.onclick = (evt) => {
+// // NEED TO LIMIT THIS TO 3 CHOICES
+//     if ([...(document.querySelectorAll(".selected"))].length < 3) {
+//         evt.target.closest("tr").classList.toggle("selected");
+//         selectItem(evt.target.closest("tr"))
+//     } else {
+//         evt.target.closest("tr").classList.remove("selected");
+//         selectItem(evt.target.closest("tr"))
+//     }
+// })
+
+
+allDataCells.forEach(cell => cell.onclick = (evt) => {
+    addItemToPlayerChoices(evt.target)
+    removeItemFromMenu(evt.target)
+    loadMenuItems(htmlAllMenuItems);
+    renderPlayerChoicesTable(playerChoices)
 })
 
 

@@ -1,6 +1,7 @@
 class MenuItem {
     constructor(item) {
-        this.name = item.name; // name of menu item
+        this.name = item.name;
+        this.description = item.description; // name of menu item
         this.category = item.category; // app, main, sweets
         this.price = item.price; // numerical price without dollar sign
         this.noFish = item.noFish; //true or false
@@ -18,7 +19,8 @@ class MenuItem {
 }
 
 const ricottaCarrots = new MenuItem({
-    name: "Smoked ricotta with roasted carrots",
+    name: "ricottaCarrots",
+    description: "Smoked ricotta with roasted carrots",
     category: 'APP',
     price: 7,
     noFish: true,
@@ -35,7 +37,8 @@ const ricottaCarrots = new MenuItem({
 });
 
 const pateEnCroute = new MenuItem({
-    name: 'Paté en croute',
+    name: "pateEnCroute",
+    description: 'Paté en croute',
     category: 'APP',
     price: 12,
     noFish: true,
@@ -52,7 +55,8 @@ const pateEnCroute = new MenuItem({
 })
 
 const eggplantCaviar = new MenuItem({
-    name: 'Eggplant caviar',
+    name: "eggplantCaviar",
+    description: 'Eggplant caviar',
     category: 'APP',
     price: 7,
     noFish: true,
@@ -69,7 +73,8 @@ const eggplantCaviar = new MenuItem({
 })
 
 const baconScone = new MenuItem({
-    name: 'Bacon scone with maple syrup and clotted cream',
+    name: "baconScone",
+    description: 'Bacon scone with maple syrup and clotted cream',
     category: 'APP',
     price: 9,
     noFish: true,
@@ -86,7 +91,8 @@ const baconScone = new MenuItem({
 })
 
 const caesarSalad = new MenuItem({
-    name: 'Caesar salad',
+    name: "caesarSalad",
+    description: 'Caesar salad',
     category: 'APP',
     price: 9,
     noFish: false,
@@ -103,7 +109,8 @@ const caesarSalad = new MenuItem({
 })
 
 const vitelloTonnato = new MenuItem({
-    name: 'Vitello tonnato',
+    name: "vitelloTonnato",
+    description: 'Vitello tonnato',
     category: 'APP',
     price: 11,
     noFish: true,
@@ -120,7 +127,8 @@ const vitelloTonnato = new MenuItem({
 })
 
 const chickenTagine = new MenuItem({
-    name: 'Chicken Tagine with Bulgour',
+    name: "chickenTagine",
+    description: 'Chicken Tagine with Bulgour',
     category: 'MAIN',
     price: 19,
     noFish: true,
@@ -137,7 +145,8 @@ const chickenTagine = new MenuItem({
 })
 
 const blanquetteVeau = new MenuItem({
-    name: 'Blanquette de veau',
+    name: "blanquetteVeau",
+    description: 'Blanquette de veau',
     category: 'MAIN',
     price: 21,
     noFish: true,
@@ -154,7 +163,8 @@ const blanquetteVeau = new MenuItem({
 })
 
 const fennelGratin = new MenuItem({
-    name: 'Fennel gratin with olives and confit lemon',
+    name: "fennelGratin",
+    description: 'Fennel gratin with olives and confit lemon',
     category: 'MAIN',
     price: 16,
     noFish: true,
@@ -171,7 +181,8 @@ const fennelGratin = new MenuItem({
 })
 
 const thaiGreenCurry = new MenuItem({
-    name: 'Thai green curry',
+    name: "thaiGreenCurry",
+    description: 'Thai green curry',
     category: 'MAIN',
     price: 17,
     noFish: false,
@@ -188,7 +199,8 @@ const thaiGreenCurry = new MenuItem({
 })
 
 const scallopsLeeks = new MenuItem({
-    name: 'Scallops with buttered leeks',
+    name: "scallopsLeeks",
+    description: 'Scallops with buttered leeks',
     category: 'MAIN',
     price: 28,
     noFish: false,
@@ -205,7 +217,8 @@ const scallopsLeeks = new MenuItem({
 })
 
 const pithiviers = new MenuItem({
-    name: 'Pithiviers',
+    name: "pithiviers",
+    description: 'Pithiviers',
     category: 'MAIN',
     price: 27,
     noFish: true,
@@ -222,7 +235,8 @@ const pithiviers = new MenuItem({
 })
 
 const pumpkinTortellini = new MenuItem({
-    name: 'Pumpkin and Ricotta Tortellini',
+    name: "pumpkinTortellini",
+    description: 'Pumpkin and Ricotta Tortellini',
     category: 'MAIN',
     price: 18,
     noFish: true,
@@ -239,7 +253,8 @@ const pumpkinTortellini = new MenuItem({
 })
 
 const chocolateCake = new MenuItem({
-    name: 'Chocolate cake with vanilla bourbon ice cream',
+    name: "chocolateCake",
+    description: 'Chocolate cake with vanilla bourbon ice cream',
     category: 'SWEET',
     price: 8,
     noFish: true,
@@ -256,7 +271,8 @@ const chocolateCake = new MenuItem({
 })
 
 const babaAuRhum = new MenuItem({
-    name: 'Baba au rhum',
+    name: "babaAuRhum",
+    description: 'Baba au rhum',
     category: 'SWEET',
     price: 10,
     noFish: true,
@@ -273,7 +289,8 @@ const babaAuRhum = new MenuItem({
 })
 
 const tiramisu = new MenuItem({
-    name: 'Tiramisu',
+    name: "tiramisu",
+    description: 'Tiramisu',
     category: 'SWEET',
     price: 8,
     noFish: true,
@@ -290,7 +307,8 @@ const tiramisu = new MenuItem({
 })
 
 const chocChipCookies = new MenuItem({
-    name: 'Chocolate chip cookies',
+    name: "chocChipCookies",
+    description: 'Chocolate chip cookies',
     category: 'SWEET',
     price: 6,
     noFish: true,
@@ -307,7 +325,8 @@ const chocChipCookies = new MenuItem({
 })
 
 const poachedPears = new MenuItem({
-    name: 'Poached pears',
+    name: "poachedPears",
+    description: 'Poached pears',
     category: 'SWEET',
     price: 9,
     noFish: true,
@@ -324,7 +343,8 @@ const poachedPears = new MenuItem({
 })
 
 const pineappleCarpaccio = new MenuItem({
-    name: 'Pineapple Carpaccio',
+    name: "pineappleCarpaccio",
+    description: 'Pineapple Carpaccio',
     category: 'SWEET',
     price: 7,
     noFish: true,
@@ -340,28 +360,28 @@ const pineappleCarpaccio = new MenuItem({
     richness: 1    
 })
 
- let allMenuItems = []
- allMenuItems.push(ricottaCarrots)
- allMenuItems.push(pateEnCroute)
- allMenuItems.push(eggplantCaviar)
- allMenuItems.push(baconScone)
- allMenuItems.push(caesarSalad)
- allMenuItems.push(vitelloTonnato)
- allMenuItems.push(chickenTagine)
- allMenuItems.push(blanquetteVeau)
- allMenuItems.push(fennelGratin)
- allMenuItems.push(thaiGreenCurry)
- allMenuItems.push(scallopsLeeks)
- allMenuItems.push(pithiviers)
- allMenuItems.push(pumpkinTortellini)
- allMenuItems.push(chocolateCake)
- allMenuItems.push(tiramisu)
- allMenuItems.push(babaAuRhum)
- allMenuItems.push(chocChipCookies)
- allMenuItems.push(poachedPears)
- allMenuItems.push(pineappleCarpaccio)
+let allMenuItems = []
+allMenuItems.push(ricottaCarrots)
+allMenuItems.push(pateEnCroute)
+allMenuItems.push(eggplantCaviar)
+allMenuItems.push(baconScone)
+allMenuItems.push(caesarSalad)
+allMenuItems.push(vitelloTonnato)
+allMenuItems.push(chickenTagine)
+allMenuItems.push(blanquetteVeau)
+allMenuItems.push(fennelGratin)
+allMenuItems.push(thaiGreenCurry)
+allMenuItems.push(scallopsLeeks)
+allMenuItems.push(pithiviers)
+allMenuItems.push(pumpkinTortellini)
+allMenuItems.push(chocolateCake)
+allMenuItems.push(tiramisu)
+allMenuItems.push(babaAuRhum)
+allMenuItems.push(chocChipCookies)
+allMenuItems.push(poachedPears)
+allMenuItems.push(pineappleCarpaccio)
 
- export {allMenuItems}
+export {allMenuItems}
 
 // console.log(allMenuItems[1].halal)
 // allMenuItems[1].halal = !allMenuItems[1].halal
