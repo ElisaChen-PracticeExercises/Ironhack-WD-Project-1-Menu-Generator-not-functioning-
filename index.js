@@ -49,8 +49,7 @@ function loadMenuItems(array) {
     array.forEach((element) => {
 // CAN I CREATE A CLASS METHOD FOR THE LINES BELOW?
     let newItem = document.createElement('tr');
-    newItem.classList.add("menuItem");
-    newItem.classList.add(element.name)
+    newItem.classList.add("menuItem", element.name);
     newItem.onclick = (evt) => {
         if (playerChoices.length < 3) {addItemToPlayerChoices(evt.target)}
         if (htmlAllMenuItems.length > 16) {removeItemFromMenu(evt.target)}
@@ -70,8 +69,7 @@ function renderPlayerChoicesTable(array) {
     playerChoicesTable.innerHTML = ""
     array.forEach((element) => {
     let newItem = document.createElement('tr');
-    newItem.classList.add("menuItem");
-    newItem.classList.add(element.name)
+    newItem.classList.add("menuItem", element.name);
     newItem.onclick = (evt) => {
         addItemToMenu(evt.target)
         removeItemFromPlayerChoices(evt.target)
