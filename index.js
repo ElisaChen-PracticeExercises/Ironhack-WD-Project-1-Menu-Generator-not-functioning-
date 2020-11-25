@@ -58,17 +58,9 @@ function loadMenuItems(array) {
         renderPlayerChoicesTable(playerChoices)
     }
 // simplify using innerhtml
-    let desc = document.createElement('td');
-    desc.textContent = element.description;
-    newItem.appendChild(desc);
-
-    let type = document.createElement('td');
-    type.textContent = element.category;
-    newItem.appendChild(type);
-
-    let price = document.createElement('td')
-    price.textContent = element.price;
-    newItem.appendChild(price);
+    newItem.innerHTML += `<td>${element.description}</td>
+    <td>${element.category}</td>
+    <td>${element.price}</td>`
 
     menuTable.appendChild(newItem);
     });
@@ -87,17 +79,9 @@ function renderPlayerChoicesTable(array) {
         renderPlayerChoicesTable(playerChoices)
     }
 
-    let desc = document.createElement('td');
-    desc.textContent = element.description;
-    newItem.appendChild(desc);
-
-    let type = document.createElement('td');
-    type.textContent = element.category;
-    newItem.appendChild(type);
-
-    let price = document.createElement('td')
-    price.textContent = element.price;
-    newItem.appendChild(price);
+    newItem.innerHTML += `<td>${element.description}</td>
+    <td>${element.category}</td>
+    <td>${element.price}</td>`
 
     playerChoicesTable.appendChild(newItem);
     });
