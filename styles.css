@@ -38,8 +38,8 @@
     text-align: center;
 }
 button#start, button#submit {
-    background-color: var(--button-color);
-    border: 1px solid;
+    background-color: var(--header-footer-color);
+    border: none;
     border-radius: 5px;
     box-shadow: 3px 3px 10px var(--border-color);
     font-size: 18px;
@@ -47,6 +47,15 @@ button#start, button#submit {
     height: 50px;
     width: 200px;
 }
+button#start:hover, button#submit:hover {
+    background-color: var(--button-color);
+}
+button#start:active, button#submit:active {
+    background-color: var(--button-color);
+    box-shadow: 3px 3px 7px var(--border-color);
+    transform: translate(3px, 3px)
+}
+
 
 /* SECTION 2: PLAY SCREEN */
 #playScreen {
@@ -81,7 +90,7 @@ h2 {
     text-shadow: 1px 1px 5px var(--light-text-color);
 }
 #tableBox {
-    border: 1px solid var(--border-color);
+    border: none;
     background-color: var(--light-text-color);
     box-shadow: 3px 3px 7px var(--border-color);
     overflow-y: scroll;
@@ -92,6 +101,9 @@ h2 {
     border-collapse: separate;
     border-spacing: 0px 10px;
     padding: 5px;
+}
+#fullMenuTable:hover {
+    cursor: default;
 }
 .menuItem{
     vertical-align: top;
@@ -109,10 +121,13 @@ h2 {
 } */
 
 /* SECTION 2d: SUBMIT BUTTON */
-#reset {
+#newPrompt {
     color: black;
     text-align: center;
     text-shadow: 1px 1px 10px var(--light-text-colorr);
+}
+#newPrompt:hover {
+    cursor: default;
 }
 
 /* SECTION 2e: RESULTS */
@@ -137,9 +152,8 @@ h2 {
         justify-content: center;
         align-items: center;
     }
-   #tableBox {
+    #tableBox {
         height: 30vh;
-
     }
     #menuItemsSection {
         grid-column: 2 / 3;
