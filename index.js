@@ -6,6 +6,9 @@ const startBtn = document.getElementById("start")
 const welcomeScreen = document.getElementById("welcomeScreen")
 const playScreen = document.getElementById("playScreen") 
 const menuTable = document.getElementById("fullMenuTable")
+const sortDownBtnName = document.getElementById("aToZName")
+const sortDownBtnType = document.getElementById("aToZType")
+const sortDownBtnPrice = document.getElementById("descPrice")
 const playerChoicesTable = document.getElementById("playerChoicesTable")
 const question = document.getElementById("question")
 const submitBtn = document.getElementById("submit")
@@ -57,9 +60,9 @@ function loadMenuItems(array) {
         renderPlayerChoicesTable(playerChoices)
     }
 // simplify using innerhtml
-    newItem.innerHTML += `<td>${element.description}</td>
-    <td>${element.category}</td>
-    <td>${element.price}</td>`
+    newItem.innerHTML += `<td class="col1">${element.description}</td>
+    <td class="col2">${element.category}</td>
+    <td class="col3">$${element.price}</td>`
 
     menuTable.appendChild(newItem);
     });
@@ -77,9 +80,9 @@ function renderPlayerChoicesTable(array) {
         renderPlayerChoicesTable(playerChoices)
     }
 
-    newItem.innerHTML += `<td>${element.description}</td>
-    <td>${element.category}</td>
-    <td>${element.price}</td>`
+    newItem.innerHTML += `<td class="col1">${element.description}</td>
+    <td class="col2">${element.category}</td>
+    <td class="col3">$${element.price}</td>`
 
     playerChoicesTable.appendChild(newItem);
     });
@@ -244,13 +247,25 @@ function printResult(boolean) {
     response.textContent = selectedPrompt.response(boolean)
 }
 
-
 // for selecting a new prompt
 function clearResponse() {response.textContent = ""}
 
+// sort menu items 
+function sortItemsByAtoZName(array) {
+    array.sort((a,b) => {return a.name.localeCompare(b.name)});
+    return array;
+}
+function sortItemsByAtoZType(array) {
+    array.sort((a,b) => {return a.category.localeCompare(b.category)});
+    return array;
+}
+function sortItemsByAscPrice(array) {
+    array.sort((a,b) => {return a.price - b.price});
+    return array;
+}
+
 // shuffle menu items? 
 // filter menu items 
-// sort menu items 
 
 // ********************************************************************************
 // // // FLOW LOGIC
@@ -269,9 +284,22 @@ startBtn.onclick = () => {
     printPrompt(allPrompts); 
     hideResponseSection()   
     // shuffle the menu items ?
-    // recomend now button should be gray with grey text and not clickable
 }
 
+sortDownBtnName.onclick = () => {
+    sortItemsByAtoZName(htmlAllMenuItems)
+    loadMenuItems(htmlAllMenuItems)
+}
+
+sortDownBtnType.onclick = () => {
+    sortItemsByAtoZType(htmlAllMenuItems)
+    loadMenuItems(htmlAllMenuItems)
+}
+
+sortDownBtnPrice.onclick = () => {
+    sortItemsByAscPrice(htmlAllMenuItems)
+    loadMenuItems(htmlAllMenuItems)
+}
 
 // PLAYER SUBMITS CHOICES 
 submitBtn.onclick = () => {

@@ -81,13 +81,28 @@ h2 {
     text-align: center;
     padding: 10px 0px;
 }
-#filter, #sort {
+/* #filter, #sort {
     background-color: transparent;
     border: none;
     font-size: 12px;
     font-weight: bold;
     padding: 0px 5px;
     text-shadow: 1px 1px 5px var(--light-text-color);
+} */
+#menuTableHeader {
+    font-weight: bold;
+    background-color: var(--light-text-color);
+    box-shadow: 3px 3px 7px var(--border-color);
+    text-align: center;
+    padding: 5px
+}
+.col1{
+    width: 60%;
+    vertical-align: middle;
+}
+.col2, .col3 {
+    width: 20%;
+    vertical-align: middle;
 }
 #tableBox {
     border: none;
@@ -102,7 +117,7 @@ h2 {
     border-spacing: 0px 10px;
     padding: 5px;
 }
-#fullMenuTable:hover {
+table:hover {
     cursor: default;
 }
 .menuItem{
@@ -116,7 +131,7 @@ h2 {
     box-shadow: 3px 3px 10px var(--border-color);
     border-collapse: separate;
     border-spacing: 5px 10px;
-    padding: 5px;
+    padding: 0px 5px;
     text-align: center;
 }
 
@@ -185,7 +200,7 @@ h2 {
 @media (min-width: 600px) {
     #playScreen {
         grid-template-columns: 1fr 6fr 1fr 4fr 1fr;
-        grid-template-rows: 1fr 4fr 2fr 1fr;
+        grid-template-rows: 1fr 4fr 3fr 1fr;
     }
     #question { 
         grid-column: 1 / 6; 
@@ -195,7 +210,7 @@ h2 {
         align-items: center;
     }
     #tableBox {
-        height: 50vh;
+        height: 60vh;
     }
     #menuItemsSection {
         grid-column: 2 / 3;
