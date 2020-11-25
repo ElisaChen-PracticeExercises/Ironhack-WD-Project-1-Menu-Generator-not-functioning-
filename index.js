@@ -16,47 +16,29 @@ let selectedItems = [] // gets filled in with prompt below
 let selectedPrompt // gets filled in with a random prompt with printPrompt function
 
 
-
+// ********************************************************************************
 // // // FUNCTIONS
 
+//For initializing the game 
+function initWelcomeScreen() {welcomeScreen.style.display = "flex"}
+function initPlayScreen() {
+    playScreen.style.display = "none"
+}
+
+//For moving on to play the game 
+function hideWelcomeScreen() {welcomeScreen.style.display = "none"}
+function showPlayScreen() {
+    playScreen.style.display = "grid"
+}
 function getRandomInteger(number) {
   return Math.floor(Math.random() * Math.floor(number));
 }
-
-// shuffle a random prompt
 function printPrompt(array) {
     let index = getRandomInteger(array.length)
     selectedPrompt = array[index]
     question.textContent = selectedPrompt.question
-    return index
 }
-
-function initWelcomeScreen() {welcomeScreen.style.display = "flex"}
-
-function initPlayScreen() {
-    playScreen.style.display = "none"
-    //NEED TO FIX THIS FOR MEDIA QUERY
-}
-
-function hideWelcomeScreen() {welcomeScreen.style.display = "none"}
-
-function showPlayScreen() {
-    playScreen.style.display = "grid"
-    //NEED TO FIX THIS FOR MEDIA QUERY
-}
-
-function hideResponseSection() {
-    responseDiv.style.backgroundColor = "transparent"
-}
-
-function showResponseSection() {
-    responseDiv.style.backgroundColor = "var(--header-footer-color)"
-
-}
-
-// load menu items 
 function loadMenuItems(array) {
-    // add to Menu Items table
     array.forEach((element) => {
 // CAN I CREATE A CLASS METHOD FOR THE LINES BELOW?
     let newItem = document.createElement('tr');
@@ -77,8 +59,16 @@ function loadMenuItems(array) {
     menuTable.appendChild(newItem);
     });
 };
+function hideResponseSection() {
+    responseDiv.style.backgroundColor = "transparent"
+}
 
-// select menu item (highlight in menu)
+function showResponseSection() {
+    responseDiv.style.backgroundColor = "var(--header-footer-color)"
+
+}
+
+// for the player to select items 
 function selectItem(target) {
     if (target.classList.contains("selected")) {
         target.style.backgroundColor = "#F6F1D1"
@@ -88,7 +78,6 @@ function selectItem(target) {
         target.style.fontWeight = "normal"
     }
 }
-
 function saveResponses() {
     let selection = [... document.querySelectorAll(".selected")]
     selectedItems = [];
@@ -103,23 +92,131 @@ function saveResponses() {
     return selectedItems
 }
 
-// generate response
-// evaluate choices - create a function to check for each of the prompts
+// for evaluating the player's choices and generating a response
 function isVegetarian() {
-    let isVegetarianEval = []
-    selectedItems.forEach(item =>  isVegetarianEval.push(item.vegetarian) )
-    let isTrue = isVegetarianEval.every((el) => el === true)
-    // console.log(isVegetarianEval)
-    // console.log(isTrue)
+    let isVegetarian = []
+    selectedItems.forEach(item =>  isVegetarian.push(item.vegetarian) )
+    let isTrue = isVegetarian.every((el) => el === true)
+    console.log(`all selected items are vegetarian: ${isTrue}`)
+    return isTrue
+}
+function containsNoFish() {
+    let noFish = []
+    selectedItems.forEach(item =>  noFish.push(item.noFish) )
+    let isTrue = noFish.every((el) => el === true)
+    console.log(`all selected items are fish-free: ${isTrue}`)
+    return isTrue
+}
+function containsNoShrimp() {
+    let noShrimp = []
+    selectedItems.forEach(item =>  noShrimp.push(item.noShrimp) )
+    let isTrue = noShrimp.every((el) => el === true)
+    console.log(`all selected items are shrimp-free: ${isTrue}`)
+    return isTrue
+}
+function containsNoCheese() {
+    let noCheese = []
+    selectedItems.forEach(item =>  noCheese.push(item.noCheese) )
+    let isTrue = noCheese.every((el) => el === true)
+    console.log(`all selected items are cheese-free: ${isTrue}`)
+    return isTrue
+}
+function containsNoLactose() {
+    let noLactose = []
+    selectedItems.forEach(item =>  noLactose.push(item.noMilk) )
+    let isTrue = noLactose.every((el) => el === true)
+    console.log(`all selected items are lactose-free: ${isTrue}`)
+    return isTrue
+}
+function isHalal() {
+    let isHalal = []
+    selectedItems.forEach(item =>  isHalal.push(item.halal) )
+    let isTrue = isHalal.every((el) => el === true)
+    console.log(`all selected items are halal: ${isTrue}`)
+    return isTrue
+}
+function isKosher() {
+    let isKosher = []
+    selectedItems.forEach(item =>  isKosher.push(item.kosher) )
+    let isTrue = isKosher.every((el) => el === true)
+    console.log(`all selected items are kosher: ${isTrue}`)
+    return isTrue
+}
+function isGlutenFree() {
+    let isGlutenFree = []
+    selectedItems.forEach(item =>  isGlutenFree.push(item.glutenFree) )
+    let isTrue = isGlutenFree.every((el) => el === true)
+    console.log(`all selected items are GF: ${isTrue}`)
+    return isTrue
+}
+function isLighter() {
+    let isLighter = []
+    selectedItems.forEach(item =>  isLighter.push(item.richness) )
+    let averageRichness = isLighter.reduce((acc,num) => acc + num) / isLighter.length
+    let isTrue
+    if (averageRichness <= 3) {isTrue = true} else {isTrue = false}
+    console.log(`average of selected items is light: ${isTrue}`)
+    return isTrue
+}
+function containsNoAlcohol() {
+    let noAlcohol = []
+    selectedItems.forEach(item =>  noAlcohol.push(item.noBooze) )
+    let isTrue = noAlcohol.every((el) => el === true)
+    console.log(`all selected items are alcohol-free: ${isTrue}`)
+    return isTrue
+}
+function containsNoRaw() {
+    let noRaw = []
+    selectedItems.forEach(item =>  noRaw.push(item.noRaw) )
+    let isTrue = noRaw.every((el) => el === true)
+    console.log(`all selected items are cooked: ${isTrue}`)
+    return isTrue
+}
+function okForPregnancy() {
+    let noAlcohol = containsNoAlcohol()
+    let noRaw = containsNoRaw()
+    const isTrue = noAlcohol && noRaw
+    console.log(`all selected items are pregnancy-friendly: ${isTrue}`)
     return isTrue
 }
 
-function judgeResponses() {}
+function isCriteriaFulfilled(object) {
+    const prompt = object.uniqID;
+    let trueOrFalse
+    switch (prompt) {
+        case "vegetarian" : trueOrFalse = isVegetarian();
+        break;
+        case "noFish" : trueOrFalse = containsNoFish();
+        break;
+        case "noShrimp" : trueOrFalse = containsNoShrimp();
+        break;
+        case "noCheese" : trueOrFalse = containsNoCheese();
+        break;
+        case "noLactose" : trueOrFalse = containsNoLactose();
+        break;
+        case "halal" : trueOrFalse = isHalal();
+        break;
+        case "kosher" : trueOrFalse = isKosher();
+        break;
+        case "glutenFree" : trueOrFalse = isGlutenFree();
+        break;
+        case "lighter" : trueOrFalse = isLighter();
+        break;
+        case "noAlcohol" : trueOrFalse = containsNoAlcohol();
+        break;
+        case "pregnant" : trueOrFalse = okForPregnancy();
+        break;
+    }
+    return trueOrFalse
+}
 
 function printResult(boolean) {
     response.textContent = selectedPrompt.response(boolean)
 }
 
+
+
+// for selecting a new prompt
 function clearSelection() {
     let selected = [... document.querySelectorAll(".selected")]
     selected.forEach(element => {
@@ -127,14 +224,13 @@ function clearSelection() {
         selectItem(element)
     })
 }
-
 function clearResponse() {response.textContent = ""}
 
 // shuffle menu items? 
 // filter menu items 
 // sort menu items 
 
-
+// ********************************************************************************
 // // // FLOW LOGIC
 
 loadMenuItems(allMenuItems);
@@ -172,8 +268,20 @@ menuItemRow.forEach(row => row.onclick = (evt) => {
 // PLAYER SUBMITS CHOICES 
 submitBtn.onclick = () => {
     saveResponses()
-    judgeResponses() // NEED TO FIX returns a boolean based on conditions of the specifc prompt
-    printResult(false) // NEED TO FIX probably use judgeResponses as the argument here
+//test check*********************************
+    // isVegetarian()
+    // containsNoFish()
+    // containsNoShrimp()
+    // containsNoCheese()
+    // containsNoLactose()
+    // isHalal()
+    // isKosher()
+    // isGlutenFree()
+    // isLighter()
+    // containsNoAlcohol()
+    // okForPregnancy()
+// end of test check*************************
+    printResult(isCriteriaFulfilled(selectedPrompt)) 
     showResponseSection()
 }
 
