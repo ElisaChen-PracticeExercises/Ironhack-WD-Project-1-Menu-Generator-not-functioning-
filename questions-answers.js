@@ -60,7 +60,7 @@ let halal = new Prompt ({
 
 let kosher = new Prompt ({
     uniqID: "kosher",
-    question: "I each strictly kosher. Do you know what I can eat?",
+    question: "I eat strictly kosher. Do you know what I can eat?",
     wrongAnswer: "No way! That is so NOT kosher.",
     rightAnswer: "I'll go with your suggestions, thanks!"
 });
